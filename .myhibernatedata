@@ -1,0 +1,16 @@
+#MyEclipse Hibernate Properties
+#Mon Sep 07 01:40:29 EST 2015
+genVersionTag=false
+genAnnotations=false
+configFile=/PerformanceReview/src/applicationContext.xml
+reStrategyClass=
+sessionFactoryId=sessionFactory
+profile=
+detectM2M=false
+genBasicCompId=false
+keyGenerator=
+createConfigFile=true
+basePersistenceClass=
+detectO2O=false
+useJavaTypes=true
+reSettingsFile=
