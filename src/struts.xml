@@ -2,4 +2,13 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
+	<package name="default" extends="struts-default">
+		<action name="login" class="LoginAction"
+			method="login">
+			<result name="login">login.jsp</result>
+			<result name="ok">loginOK.jsp</result>
+			<result name="error">loginError.jsp</result>
+		</action>
+	</package>
+
 </struts>    

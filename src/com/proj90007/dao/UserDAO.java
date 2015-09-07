@@ -112,8 +112,8 @@ public class UserDAO {
 		}
 	}
 
-	public List findByUsername(Object username) {
-		return findByProperty(USERNAME, username);
+	public User findByUsername(Object username) {
+		return (User) findByProperty(USERNAME, username).get(0);
 	}
 
 	public List findByPassword(Object password) {

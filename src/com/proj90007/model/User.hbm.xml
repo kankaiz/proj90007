@@ -41,19 +41,19 @@
             <key>
                 <column name="reviewed_HR_id" />
             </key>
-            <one-to-many class="Review" />
+            <one-to-many class="com.proj90007.model.Review" />
         </set>
         <set name="reviewsForInitiatorId" inverse="true">
             <key>
                 <column name="initiator_id" not-null="true" />
             </key>
-            <one-to-many class="Review" />
+            <one-to-many class="com.proj90007.model.Review" />
         </set>
         <set name="reviewsForReviewedSupervisorId" inverse="true">
             <key>
                 <column name="reviewed_supervisor_id" />
             </key>
-            <one-to-many class="Review" />
+            <one-to-many class="com.proj90007.model.Review" />
         </set>
     </class>
 </hibernate-mapping>
