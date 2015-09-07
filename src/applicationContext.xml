@@ -31,4 +31,24 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" /></beans>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="DeptDAO" class="com.proj90007.dao.DeptDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserDAO" class="com.proj90007.dao.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProfileDAO" class="com.proj90007.dao.ProfileDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ReviewDAO" class="com.proj90007.dao.ReviewDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>	
