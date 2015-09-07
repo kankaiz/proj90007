@@ -1,5 +1,7 @@
 package com.proj90007.service;
 
+import java.util.List;
+
 import com.proj90007.dao.UserDAO;
 import com.proj90007.model.User;
 
@@ -18,11 +20,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean login(String name, String password) {
 		
-		User u = userDAO.findByUsername(name);
-		if (u == null) {
+		List u = userDAO.findByUsername(name);
+		if (u.isEmpty()) {
 			return false;
 		} else {
-			if (u.getPassword().equals(password)) {
+			User user = (User) u.get(0);
+			if (user.getPassword().equals(password)) {
 				return true;
 			} else {
 				return false;
