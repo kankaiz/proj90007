@@ -13,15 +13,16 @@ public class User implements java.io.Serializable {
 
 	private Integer id;
 	private Dept dept;
-	private User user;
+	private User supervisor;
 	private String username;
 	private String password;
 	private String status;
-	private Set users = new HashSet(0);
-	private Set profiles = new HashSet(0);
-	private Set reviewsForReviewedHrId = new HashSet(0);
-	private Set reviewsForInitiatorId = new HashSet(0);
-	private Set reviewsForReviewedSupervisorId = new HashSet(0);
+	private Set<User> subordinates = new HashSet<User>(0);
+	//private Set profiles = new HashSet(0);
+	private Profile profile;
+	private Set<Review> reviewsAsHR = new HashSet<Review>(0);
+	private Set<Review> selfReviews = new HashSet<Review>(0);
+	private Set<Review> reviewsAsSupervisor = new HashSet<Review>(0);
 
 	// Constructors
 
@@ -36,24 +37,28 @@ public class User implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public User(Integer id, Dept dept, User user, String username,
-			String password, String status, Set users, Set profiles,
-			Set reviewsForReviewedHrId, Set reviewsForInitiatorId,
-			Set reviewsForReviewedSupervisorId) {
+	public User(Integer id, Dept dept, User supervisor, String username,
+			String password, String status, Set<User> subordinates, Profile profile,
+			Set<Review> reviewsAsHR, Set<Review> selfReviews,
+			Set<Review> reviewsAsSupervisor) {
 		this.id = id;
 		this.dept = dept;
-		this.user = user;
+		this.supervisor = supervisor;
 		this.username = username;
 		this.password = password;
 		this.status = status;
-		this.users = users;
-		this.profiles = profiles;
-		this.reviewsForReviewedHrId = reviewsForReviewedHrId;
-		this.reviewsForInitiatorId = reviewsForInitiatorId;
-		this.reviewsForReviewedSupervisorId = reviewsForReviewedSupervisorId;
+		this.subordinates = subordinates;
+		this.profile = profile;
+		this.reviewsAsHR = reviewsAsHR;
+		this.selfReviews = selfReviews;
+		this.reviewsAsSupervisor = reviewsAsSupervisor;
 	}
 
 	// Property accessors
+	
+	public Boolean isHR() {
+		return this.dept.isHrDept();
+	}
 
 	public Integer getId() {
 		return this.id;
@@ -71,12 +76,12 @@ public class User implements java.io.Serializable {
 		this.dept = dept;
 	}
 
-	public User getUser() {
-		return this.user;
+	public User getSupervisor() {
+		return this.supervisor;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setSupervisor(User supervisor) {
+		this.supervisor = supervisor;
 	}
 
 	public String getUsername() {
@@ -103,45 +108,53 @@ public class User implements java.io.Serializable {
 		this.status = status;
 	}
 
-	public Set getUsers() {
-		return this.users;
+	public Set<User> getSubordinates() {
+		return this.subordinates;
 	}
 
-	public void setUsers(Set users) {
-		this.users = users;
+	public void setSubordinates(Set<User> subordinates) {
+		this.subordinates = subordinates;
 	}
 
-	public Set getProfiles() {
-		return this.profiles;
+//	public Set getProfiles() {
+//		return this.profiles;
+//	}
+//
+//	public void setProfiles(Set profiles) {
+//		this.profiles = profiles;
+//	}
+	
+	public Profile getProfile() {
+		return profile;
 	}
 
-	public void setProfiles(Set profiles) {
-		this.profiles = profiles;
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
-	public Set getReviewsForReviewedHrId() {
-		return this.reviewsForReviewedHrId;
+	public Set<Review> getReviewsAsHR() {
+		return this.reviewsAsHR;
 	}
 
-	public void setReviewsForReviewedHrId(Set reviewsForReviewedHrId) {
-		this.reviewsForReviewedHrId = reviewsForReviewedHrId;
+	public void setReviewsAsHR(Set<Review> reviewsAsHR) {
+		this.reviewsAsHR = reviewsAsHR;
 	}
 
-	public Set getReviewsForInitiatorId() {
-		return this.reviewsForInitiatorId;
+	public Set<Review> getSelfReviews() {
+		return this.selfReviews;
 	}
 
-	public void setReviewsForInitiatorId(Set reviewsForInitiatorId) {
-		this.reviewsForInitiatorId = reviewsForInitiatorId;
+	public void setSelfReviews(Set<Review> selfReviews) {
+		this.selfReviews = selfReviews;
 	}
 
-	public Set getReviewsForReviewedSupervisorId() {
-		return this.reviewsForReviewedSupervisorId;
+	public Set<Review> getReviewsAsSupervisor() {
+		return this.reviewsAsSupervisor;
 	}
 
-	public void setReviewsForReviewedSupervisorId(
-			Set reviewsForReviewedSupervisorId) {
-		this.reviewsForReviewedSupervisorId = reviewsForReviewedSupervisorId;
+	public void setReviewsAsSupervisor(
+			Set<Review> reviewsAsSupervisor) {
+		this.reviewsAsSupervisor = reviewsAsSupervisor;
 	}
 
 }

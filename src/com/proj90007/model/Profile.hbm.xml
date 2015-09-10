@@ -11,7 +11,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="user" class="com.proj90007.model.User" fetch="select">
-            <column name="user_id" not-null="true" />
+            <column name="user_id" not-null="true" unique="true"/>
         </many-to-one>
         <property name="firstName" type="java.lang.String">
             <column name="first_name" length="45" />

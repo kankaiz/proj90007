@@ -13,7 +13,7 @@ public class Dept implements java.io.Serializable {
 
 	private Integer deptId;
 	private String deptName;
-	private Set users = new HashSet(0);
+	private Set<User> users = new HashSet<User>(0);
 
 	// Constructors
 
@@ -27,12 +27,18 @@ public class Dept implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Dept(String deptName, Set users) {
+	public Dept(String deptName, Set<User> users) {
 		this.deptName = deptName;
 		this.users = users;
 	}
 
 	// Property accessors
+	
+	public Boolean isHrDept() {
+		if (this.deptName=="HR-department") // hard code here
+			return true;
+		else return false;
+	}
 
 	public Integer getDeptId() {
 		return this.deptId;
@@ -50,11 +56,11 @@ public class Dept implements java.io.Serializable {
 		this.deptName = deptName;
 	}
 
-	public Set getUsers() {
+	public Set<User> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(Set users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 

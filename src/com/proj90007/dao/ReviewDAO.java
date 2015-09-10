@@ -2,7 +2,6 @@ package com.proj90007.dao;
 // default package
 
 import com.proj90007.model.Review;
-import com.proj90007.model.User;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 	 * @see .Review
   * @author MyEclipse Persistence Tools 
  */
-    @Transactional   
+    @Transactional
 public class ReviewDAO  {
 	     private static final Logger log = LoggerFactory.getLogger(ReviewDAO.class);
 		//property constants

@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>loginOK</title>
+<title>create Review</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -26,18 +26,12 @@
 </head>
 
 <body>
-	<center>
-		<h1>Login Is Ok</h1>
-	</center>
-	<s:form> 
-<%--     	Hello: ${requestScope.name} <br>
-		 <%session.getAttribute("user").toString(); %><br>
-    	again <%=request.getParameter("name")%> --%>
-    	Hello:<s:property value="#session.user.username"/>
+	<h2>Create Review</h2>
+	<s:form action="createReview">
+		<s:textfield name="reviewYear" label="review year" />
+		<s:radio label="Self Rate" name="selfRate" list="#{'1':'exceptional','2':'exceeds expectation','3':'achieve expectation','4':'meet some expectation','5':'does not meet'}" value="3" />
+		<s:textarea name="selfAssessment" label="Self Assessment" cols="50" rows="5" />
+		<s:submit value="save"/>
 	</s:form>
-	
-	<a href="<s:url value="createReview.jsp"  />">Create Review</a>
-
-	
 </body>
 </html>

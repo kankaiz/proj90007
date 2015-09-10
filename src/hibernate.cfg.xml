@@ -18,7 +18,8 @@
 			com.mysql.jdbc.Driver
 		</property>
 		<property name="myeclipse.connection.profile">mySql</property>
-		<property name="show sql">true</property>
+		<property name="show_sql">true</property>
+		<property name="connection.autocommit">true</property>
 
 <!-- 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">20</property>
