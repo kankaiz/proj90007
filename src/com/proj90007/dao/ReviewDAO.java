@@ -83,7 +83,7 @@ public class ReviewDAO  {
         log.debug("getting Review instance with id: " + id);
         try {
             Review instance = (Review) getCurrentSession()
-                    .get("Review", id);
+                    .get("com.proj90007.model.Review", id);
             return instance;
         } catch (RuntimeException re) {
             log.error("get failed", re);
@@ -95,7 +95,7 @@ public class ReviewDAO  {
     public List findByExample(Review instance) {
         log.debug("finding Review instance by example");
         try {
-            List results = getCurrentSession().createCriteria("Review") .add(Example.create(instance)).list();
+            List results = getCurrentSession().createCriteria("com.proj90007.model.Review") .add(Example.create(instance)).list();
             log.debug("find by example successful, result size: " + results.size());
             return results;
         } catch (RuntimeException re) {

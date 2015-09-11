@@ -13,7 +13,7 @@ import com.proj90007.service.UserService;
 
 public class ReviewAction extends ActionSupport {
 	
-	Review review = new Review();
+	private Review review;
 	
 	private int id;
 	
@@ -72,7 +72,18 @@ public class ReviewAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String attempEditReview() {
+		review = reviewService.getReviewByID(this.id);
+		return SUCCESS;
+	}
 	
+	public String editReview() {
+		review.setReviewYear(reviewYear);
+		review.setSelfRate(selfRate);
+		review.setSelfAssessment(selfAssessment);
+		reviewService.createReview(review);
+		return SUCCESS;
+	}
 
 	public int getId() {
 		return id;
@@ -80,6 +91,15 @@ public class ReviewAction extends ActionSupport {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
 	}
 
 	public int getReviewYear() {

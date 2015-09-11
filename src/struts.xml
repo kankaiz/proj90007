@@ -13,8 +13,6 @@
 
 		<action name="createReview" class="ReviewAction" method="createReview">
 			<result name="success" type="redirectAction">listReviews</result>
-			<result name="error">loginError.jsp</result>
-			<result name="input">createReview.jsp</result>
 		</action>
 		
 		<action name="listReviews" class="ReviewAction" method="listReviews">
@@ -22,6 +20,14 @@
 		</action>
 		
 		<action name="deleteReview" class="ReviewAction" method="deleteReview">
+			<result name="success" type="redirectAction">listReviews</result>
+		</action>
+		
+		<action name="attempEditReview" class="ReviewAction" method="attempEditReview">
+			<result name="success">editReview.jsp</result>
+		</action>
+		
+		<action name="editReview" class="ReviewAction" method="editReview">
 			<result name="success" type="redirectAction">listReviews</result>
 		</action>
 

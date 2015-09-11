@@ -39,4 +39,10 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDAO.delete(review);
 	}
 	
+	@Override
+	public Review getReviewByID(Integer reviewID) {
+		Review review = reviewDAO.findById(reviewID);
+		return review;
+	}
+	
 }
