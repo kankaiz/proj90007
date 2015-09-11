@@ -39,13 +39,17 @@
 	<s:if test="selfReviews.size() > 0">
 		<table border="1px" cellpadding="8px">
 			<tr>
+				<th>ReviewYear</th>
 				<th>SelfRate</th>
 				<th>SelfAssessment</th>
+				<th>Delete</th>
 			</tr>
 			<s:iterator value="selfReviews">
 				<tr>
+					<td><s:property value="reviewYear" /></td>
 					<td><s:property value="selfRate" /></td>
 					<td><s:property value="selfAssessment" /></td>
+					<td><a href="${pageContext.request.contextPath }/deleteReview.action?id=<s:property value="id"/>">delete</a></td>
 				</tr>
 			</s:iterator>
 		</table>

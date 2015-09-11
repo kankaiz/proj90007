@@ -15,6 +15,8 @@ public class ReviewAction extends ActionSupport {
 	
 	Review review = new Review();
 	
+	private int id;
+	
 	private int reviewYear;
 	
 	private int selfRate;
@@ -63,6 +65,21 @@ public class ReviewAction extends ActionSupport {
 		User user = (User) ServletActionContext.getContext().getSession().get("user");
 		selfReviews = userService.listSelfReviews(user);
 		return SUCCESS;
+	}
+	
+	public String deleteReview() {
+		reviewService.deleteReview(this.id);
+		return SUCCESS;
+	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getReviewYear() {

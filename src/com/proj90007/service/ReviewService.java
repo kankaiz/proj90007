@@ -8,5 +8,7 @@ import com.proj90007.model.User;
 public interface ReviewService {
 	
 	public void createReview(Review review);
+	
+	public void deleteReview(Integer reviewID);
 
 }

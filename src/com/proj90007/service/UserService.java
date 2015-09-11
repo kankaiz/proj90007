@@ -11,4 +11,8 @@ public interface UserService {
 	
 	public Set<Review> listSelfReviews(User user);
 	
+	public Set<Review> listSubordinateReviews(User supervsor);
+	
+	public Set<Review> listReviewsAsHr(User hr);
+	
 }

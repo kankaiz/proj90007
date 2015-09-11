@@ -48,5 +48,20 @@ public class UserServiceImpl implements UserService {
 		Set<Review> selfReviews = u.getSelfReviews();
 		return selfReviews;
 	}
+	
+	@Override
+	public Set<Review> listSubordinateReviews(User supervsor) {
+		User u = userDAO.findById(supervsor.getId());
+		Hibernate.initialize(u.getReviewsAsSupervisor());
+		Set<Review> subordinateReviews = u.getReviewsAsSupervisor();
+		return subordinateReviews;
+	}
 
+	@Override
+	public Set<Review> listReviewsAsHr(User hr) {
+		User u = userDAO.findById(hr.getId());
+		Hibernate.initialize(u.getReviewsAsHR());
+		Set<Review> reviewsAsHrReviews = u.getReviewsAsHR();
+		return reviewsAsHrReviews;
+	}
 }
