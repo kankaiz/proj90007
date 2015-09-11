@@ -98,6 +98,7 @@
 	
 	<bean id="ReviewAction" class="com.proj90007.action.ReviewAction">
 		<property name="reviewService" ref="reviewService" />
+		<property name="userService" ref="userService" />
 	</bean>
 	
 	

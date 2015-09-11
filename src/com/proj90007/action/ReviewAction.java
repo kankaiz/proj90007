@@ -1,10 +1,14 @@
 package com.proj90007.action;
 
-import com.opensymphony.xwork2.ActionContext;
+import java.util.Set;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.proj90007.model.Review;
 import com.proj90007.model.User;
 import com.proj90007.service.ReviewService;
+import com.proj90007.service.UserService;
 
 
 public class ReviewAction extends ActionSupport {
@@ -18,6 +22,11 @@ public class ReviewAction extends ActionSupport {
 	private String selfAssessment;
 	
 	private ReviewService reviewService;
+	
+	private UserService userService;
+	
+	//private List<Review> selfReviews;
+	private Set<Review> selfReviews;
 	
 	
 //	HttpServletRequest request = ServletActionContext.getRequest();
@@ -36,8 +45,7 @@ public class ReviewAction extends ActionSupport {
 	
 	
 	public String createReview() {
-		User user = (User) ActionContext.getContext().getSession().get("user");
-		
+		User user = (User) ServletActionContext.getContext().getSession().get("user");
 		review.setReviewYear(reviewYear);
 		review.setSelfRate(selfRate);
 		review.setSelfAssessment(selfAssessment);
@@ -46,6 +54,14 @@ public class ReviewAction extends ActionSupport {
 		
 		reviewService.createReview(review);
 		
+		//selfReviews = reviewService.listSelfReviews(user);
+		//System.out.println(selfReviews.toString());
+		return SUCCESS;
+	}
+	
+	public String listReviews() {
+		User user = (User) ServletActionContext.getContext().getSession().get("user");
+		selfReviews = userService.listSelfReviews(user);
 		return SUCCESS;
 	}
 
@@ -79,6 +95,22 @@ public class ReviewAction extends ActionSupport {
 
 	public void setReviewService(ReviewService reviewService) {
 		this.reviewService = reviewService;
+	}
+
+	public Set<Review> getSelfReviews() {
+		return selfReviews;
+	}
+
+	public void setSelfReviews(Set<Review> selfReviews) {
+		this.selfReviews = selfReviews;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 	
 	

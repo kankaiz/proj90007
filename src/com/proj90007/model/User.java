@@ -3,6 +3,9 @@ package com.proj90007.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -21,6 +24,7 @@ public class User implements java.io.Serializable {
 	//private Set profiles = new HashSet(0);
 	private Profile profile;
 	private Set<Review> reviewsAsHR = new HashSet<Review>(0);
+	@OneToMany(fetch=FetchType.LAZY)
 	private Set<Review> selfReviews = new HashSet<Review>(0);
 	private Set<Review> reviewsAsSupervisor = new HashSet<Review>(0);
 

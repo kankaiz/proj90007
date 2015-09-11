@@ -29,15 +29,30 @@
 	<center>
 		<h1>Login Is Ok</h1>
 	</center>
-	<s:form> 
-<%--     	Hello: ${requestScope.name} <br>
+	<s:form>
+		<%--     	Hello: ${requestScope.name} <br>
 		 <%session.getAttribute("user").toString(); %><br>
     	again <%=request.getParameter("name")%> --%>
-    	Hello:<s:property value="#session.user.username"/>
+    	Hello:<s:property value="#session.user.username" />
 	</s:form>
-	
+
+	<s:if test="selfReviews.size() > 0">
+		<table border="1px" cellpadding="8px">
+			<tr>
+				<th>SelfRate</th>
+				<th>SelfAssessment</th>
+			</tr>
+			<s:iterator value="selfReviews">
+				<tr>
+					<td><s:property value="selfRate" /></td>
+					<td><s:property value="selfAssessment" /></td>
+				</tr>
+			</s:iterator>
+		</table>
+	</s:if>
+
 	<a href="<s:url value="createReview.jsp"  />">Create Review</a>
 
-	
+
 </body>
 </html>

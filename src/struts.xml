@@ -6,15 +6,19 @@
 	<package name="default" extends="struts-default">
 
 		<action name="login" class="LoginAction">
-			<result name="success">loginOK.jsp</result>
+			<result name="success" type="redirectAction">listReviews</result>
 			<result name="error">loginError.jsp</result>
 			<result name="input">login.jsp</result>
 		</action>
 
 		<action name="createReview" class="ReviewAction" method="createReview">
-			<result name="success">loginOK.jsp</result>
+			<result name="success" type="redirectAction">listReviews</result>
 			<result name="error">loginError.jsp</result>
 			<result name="input">createReview.jsp</result>
+		</action>
+		
+		<action name="listReviews" class="ReviewAction" method="listReviews">
+			<result name="success">loginOK.jsp</result>
 		</action>
 
 	</package>

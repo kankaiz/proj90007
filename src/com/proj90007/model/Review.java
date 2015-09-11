@@ -213,11 +213,6 @@ public class Review  implements java.io.Serializable {
     public void setCompliance(Integer compliance) {
         this.compliance = compliance;
     }
-   
-
-
-
-
 
 
 
