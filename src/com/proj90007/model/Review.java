@@ -13,9 +13,9 @@ public class Review  implements java.io.Serializable {
     // Fields    
 
      private Integer id;
-     private User userByInitiatorId;
-     private User userByReviewedHrId;
-     private User userByReviewedSupervisorId;
+     private User initiator;
+     private User hrReviewer;
+     private User supervisorReviewer;
      private Integer reviewYear;
      private String status;
      private Integer selfRate;
@@ -39,18 +39,18 @@ public class Review  implements java.io.Serializable {
     }
 
 	/** minimal constructor */
-    public Review(Integer id, User userByInitiatorId, String status) {
+    public Review(Integer id, User initiator, String status) {
         this.id = id;
-        this.userByInitiatorId = userByInitiatorId;
+        this.initiator = initiator;
         this.status = status;
     }
     
     /** full constructor */
-    public Review(Integer id, User userByInitiatorId, User userByReviewedHrId, User userByReviewedSupervisorId, Integer reviewYear, String status, Integer selfRate, String selfAssessment, String newGoal, Integer supervisorRate, String supervisorAssessment, Integer collaboration, Integer communication, Integer customerFocus, Integer businessProfessional, Integer hrRate, String hrAssessment, Integer compliance) {
+    public Review(Integer id, User initiator, User hrReviewer, User supervisorReviewer, Integer reviewYear, String status, Integer selfRate, String selfAssessment, String newGoal, Integer supervisorRate, String supervisorAssessment, Integer collaboration, Integer communication, Integer customerFocus, Integer businessProfessional, Integer hrRate, String hrAssessment, Integer compliance) {
         this.id = id;
-        this.userByInitiatorId = userByInitiatorId;
-        this.userByReviewedHrId = userByReviewedHrId;
-        this.userByReviewedSupervisorId = userByReviewedSupervisorId;
+        this.initiator = initiator;
+        this.hrReviewer = hrReviewer;
+        this.supervisorReviewer = supervisorReviewer;
         this.reviewYear = reviewYear;
         this.status = status;
         this.selfRate = selfRate;
@@ -78,28 +78,28 @@ public class Review  implements java.io.Serializable {
         this.id = id;
     }
 
-    public User getUserByInitiatorId() {
-        return this.userByInitiatorId;
+    public User getInitiator() {
+        return this.initiator;
     }
     
-    public void setUserByInitiatorId(User userByInitiatorId) {
-        this.userByInitiatorId = userByInitiatorId;
+    public void setInitiator(User initiator) {
+        this.initiator = initiator;
     }
 
-    public User getUserByReviewedHrId() {
-        return this.userByReviewedHrId;
-    }
-    
-    public void setUserByReviewedHrId(User userByReviewedHrId) {
-        this.userByReviewedHrId = userByReviewedHrId;
-    }
+    public User getHrReviewer() {
+		return hrReviewer;
+	}
 
-    public User getUserByReviewedSupervisorId() {
-        return this.userByReviewedSupervisorId;
+	public void setHrReviewer(User hrReviewer) {
+		this.hrReviewer = hrReviewer;
+	}
+
+	public User getSupervisorReviewer() {
+        return this.supervisorReviewer;
     }
     
-    public void setUserByReviewedSupervisorId(User userByReviewedSupervisorId) {
-        this.userByReviewedSupervisorId = userByReviewedSupervisorId;
+    public void setSupervisorReviewer(User supervisorReviewer) {
+        this.supervisorReviewer = supervisorReviewer;
     }
 
     public Integer getReviewYear() {

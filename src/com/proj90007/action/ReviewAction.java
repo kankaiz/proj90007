@@ -48,10 +48,11 @@ public class ReviewAction extends ActionSupport {
 	
 	public String createReview() {
 		User user = (User) ServletActionContext.getContext().getSession().get("user");
+		review = new Review();
 		review.setReviewYear(reviewYear);
 		review.setSelfRate(selfRate);
 		review.setSelfAssessment(selfAssessment);
-		review.setUserByInitiatorId(user);
+		review.setInitiator(user);
 		review.setStatus("initiate");
 		
 		reviewService.createReview(review);
