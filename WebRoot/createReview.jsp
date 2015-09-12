@@ -22,16 +22,19 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
 </head>
 
 <body>
 	<h2>Create Review</h2>
-	<s:form action="createReview">
-		<s:textfield name="reviewYear" label="review year" />
-		<s:radio label="Self Rate" name="selfRate" list="#{'1':'exceptional','2':'exceeds expectation','3':'achieve expectation','4':'meet some expectation','5':'does not meet'}" value="3" />
-		<s:textarea name="selfAssessment" label="Self Assessment" cols="50" rows="5" />
-		<s:submit value="save"/>
+	<s:form>
+		<s:textfield name="reviewYear" label="review year" value="%{review.reviewYear}"/>
+		<s:radio label="Self Rate" name="selfRate"
+			list="#{'1':'exceptional','2':'exceeds expectation','3':'achieve expectation','4':'meet some expectation','5':'does not meet'}"
+			value="%{review.selfRate}" />
+		<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50"
+			rows="5" />
+		<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
+		<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 	</s:form>
 </body>
 </html>

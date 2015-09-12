@@ -24,11 +24,16 @@
 		</action>
 		
 		<action name="attempEditReview" class="ReviewAction" method="attempEditReview">
-			<result name="success">editReview.jsp</result>
+			<result name="success">createReview.jsp</result>
 		</action>
 		
 		<action name="editReview" class="ReviewAction" method="editReview">
 			<result name="success" type="redirectAction">listReviews</result>
+		</action>
+		
+		<action name="submitReview" class="ReviewAction" method="submitReview">
+			<result name="success" type="redirectAction">listReviews</result>
+			<result name="input">createReview.jsp</result>
 		</action>
 
 	</package>

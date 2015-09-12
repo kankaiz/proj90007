@@ -68,4 +68,20 @@ public class UserServiceImpl implements UserService {
 		Set<Review> reviewsAsHrReviews = u.getReviewsAsHR();
 		return reviewsAsHrReviews;
 	}
+	
+	@Override
+	public boolean isHR(User user) {
+		User u = userDAO.findById(user.getId());
+		Hibernate.initialize(u.isHR());
+		boolean isHr = u.isHR();
+		return isHr;
+	}
+
+	@Override
+	public Set<Review> listReviewToBeArchived(User hr) {
+		User u = userDAO.findById(hr.getId());
+		Hibernate.initialize(u.getReviewsToBeArchived());
+		Set<Review> reviewsToBeArchived = u.getReviewsToBeArchived();
+		return reviewsToBeArchived;
+	}
 }

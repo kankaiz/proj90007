@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import org.hibernate.Hibernate;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -27,9 +29,9 @@ public class User implements java.io.Serializable {
 	@OneToMany(fetch=FetchType.LAZY)
 	private Set<Review> selfReviews = new HashSet<Review>(0);
 	private Set<Review> reviewsAsSupervisor = new HashSet<Review>(0);
+	private Set<Review> reviewsToBeArchived = new HashSet<Review>(0);
 
 	// Constructors
-
 	/** default constructor */
 	public User() {
 	}
@@ -44,7 +46,7 @@ public class User implements java.io.Serializable {
 	public User(Integer id, Dept dept, User supervisor, String username,
 			String password, String status, Set<User> subordinates, Profile profile,
 			Set<Review> reviewsAsHR, Set<Review> selfReviews,
-			Set<Review> reviewsAsSupervisor) {
+			Set<Review> reviewsAsSupervisor, Set<Review> reviewsToBeArchived) {
 		this.id = id;
 		this.dept = dept;
 		this.supervisor = supervisor;
@@ -56,11 +58,13 @@ public class User implements java.io.Serializable {
 		this.reviewsAsHR = reviewsAsHR;
 		this.selfReviews = selfReviews;
 		this.reviewsAsSupervisor = reviewsAsSupervisor;
+		this.reviewsToBeArchived = reviewsToBeArchived;
 	}
 
 	// Property accessors
 	
 	public Boolean isHR() {
+		Hibernate.initialize(this.dept);
 		return this.dept.isHrDept();
 	}
 
@@ -160,5 +164,14 @@ public class User implements java.io.Serializable {
 			Set<Review> reviewsAsSupervisor) {
 		this.reviewsAsSupervisor = reviewsAsSupervisor;
 	}
+	
+	public Set<Review> getReviewsToBeArchived() {
+		return reviewsToBeArchived;
+	}
+
+	public void setReviewsToBeArchived(Set<Review> reviewsToBeArchived) {
+		this.reviewsToBeArchived = reviewsToBeArchived;
+	}
+
 
 }
