@@ -73,7 +73,7 @@ public class ReviewAction extends ActionSupport {
 		subordinateReviews = userService.listSubordinateReviews(user);
 		
 		// if user is an hr
-		allEmployeeReviews = userService.listReviewsAsHr(user);
+		allEmployeeReviews = userService.listReviewsToBeArchived(user);
 
 		return SUCCESS;
 	}

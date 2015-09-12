@@ -1,13 +1,14 @@
 package com.proj90007.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
-
 import org.apache.commons.codec.digest.*;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.proj90007.dao.ReviewDAO;
 import com.proj90007.dao.UserDAO;
 import com.proj90007.model.Review;
 import com.proj90007.model.User;
@@ -15,6 +16,15 @@ import com.proj90007.model.User;
 public class UserServiceImpl implements UserService {
 
 	private UserDAO userDAO;
+	private ReviewDAO reviewDAO;
+
+	public ReviewDAO getReviewDAO() {
+		return reviewDAO;
+	}
+
+	public void setReviewDAO(ReviewDAO reviewDAO) {
+		this.reviewDAO = reviewDAO;
+	}
 
 	public UserDAO getUserDAO() {
 		return userDAO;
@@ -78,10 +88,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Set<Review> listReviewToBeArchived(User hr) {
-		User u = userDAO.findById(hr.getId());
-		Hibernate.initialize(u.getReviewsToBeArchived());
-		Set<Review> reviewsToBeArchived = u.getReviewsToBeArchived();
+	public Set<Review> listReviewsToBeArchived(User hr) {
+		List reviews = reviewDAO.findByStatus("HR");
+		Set<Review> reviewsToBeArchived = new HashSet<Review>(reviews);
 		return reviewsToBeArchived;
 	}
 }

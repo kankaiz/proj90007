@@ -131,6 +131,20 @@ public class ReviewDAO  {
 		);
 	}
 	
+	public List findByStatusAndHR(Object status, Integer hrID) {
+		try {
+			String queryString = "from Review as model where model.status"
+						+ "= ? and model.hrReviewer= ?";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setParameter(0, status);
+			queryObject.setParameter(1, null);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
 	public List findBySelfRate(Object selfRate
 	) {
 		return findByProperty(SELF_RATE, selfRate

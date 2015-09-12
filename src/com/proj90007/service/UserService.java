@@ -15,7 +15,7 @@ public interface UserService {
 	
 	public Set<Review> listReviewsAsHr(User hr);
 	
-	public Set<Review> listReviewToBeArchived(User hr);
+	public Set<Review> listReviewsToBeArchived(User hr);
 	
 	public boolean isHR(User user);
 	
