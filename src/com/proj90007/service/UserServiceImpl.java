@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.hibernate.Hibernate;
 
+import org.apache.commons.codec.digest.*;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.proj90007.dao.UserDAO;
 import com.proj90007.model.Review;
@@ -29,7 +31,9 @@ public class UserServiceImpl implements UserService {
 			return false;
 		} else {
 			User user = (User) u.get(0);
-			if (user.getPassword().equals(password)) {
+			String digestedPassword = DigestUtils.sha1Hex(password);
+			System.out.print(digestedPassword);
+			if (digestedPassword.equals(user.getPassword())) {
 				ActionContext.getContext().getSession().put("user",user );
 				if(user!=null){  
 					Hibernate.initialize(user.getSelfReviews());  
