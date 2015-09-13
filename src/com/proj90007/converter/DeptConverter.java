@@ -12,15 +12,14 @@ public class DeptConverter extends StrutsTypeConverter {
 	@Override
 	public Object convertFromString(Map map, String[] values, Class toClass) {
 		Dept dept = new Dept();
-		
+		dept.setDeptName(values[0]);
 		return dept;
 	}
 
 	@Override
 	public String convertToString(Map map, Object o) {
 		Dept dept = (Dept) o;
-		String deptName = "deptName = " + dept.getDeptName();
-		return "dept = HR_department";
+		return dept.getDeptName();
 	}
 
 }

@@ -81,7 +81,6 @@ public class Review  implements java.io.Serializable {
         this.id = id;
     }
 
-    @TypeConversion(converter="com.proj90007.converter.UserConverter")
     public User getInitiator() {
         return this.initiator;
     }

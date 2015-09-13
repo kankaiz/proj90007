@@ -10,7 +10,8 @@ public class UserConverter extends StrutsTypeConverter {
 
 	@Override
 	public Object convertFromString(Map map, String[] values, Class toClass) {
-		// TODO Auto-generated method stub
+		User user = new User();
+		user.setUsername(values[0]);
 		return null;
 	}
 

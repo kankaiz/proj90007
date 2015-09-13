@@ -78,7 +78,6 @@ public class User implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@TypeConversion(converter = "com.proj90007.converter.DeptConverter")
 	public Dept getDept() {
 		return this.dept;
 	}

@@ -21,12 +21,12 @@
 	<filter>  
 	<filter-name>hibernateFilter</filter-name>  
 	<filter-class>  
-		org.springframework.orm.hibernate3.support.OpenSessionInViewFilter  
+		org.springframework.orm.hibernate4.support.OpenSessionInViewFilter  
 	</filter-class> 
 	<init-param>  
-		<!--here not using OpenSessionInViewFilter -->
+		<!--here using OpenSessionInViewFilter -->
        <param-name>singleSession</param-name>  
-       <param-value>false</param-value>   
+       <param-value>true</param-value>   
      </init-param> 
 	</filter>
 	<filter-mapping>  

@@ -60,7 +60,7 @@
 		</table>
 	</s:if>
 
-	<a href="<s:url value="createReview.jsp"  />">Create Review</a>
+	<a href="<s:url value="createReview.jsp"  />">Create Review</a><br>
 
 	<s:if test="subordinateReviews.size() > 0">
 	<h1>Subordinates' Review</h1>
@@ -85,8 +85,9 @@
 			</s:iterator>
 		</table>
 	</s:if>
+	<br>
 	
-	<s:if test='%{allEmployeeReviews.size() > 0 || #session.user.dept.deptName == "HR-department"}'>
+	<s:if test='%{allEmployeeReviews.size() > 0 && #session.user.dept.deptName == "HR-department"}'>
 	<s:label value='%{#session.user.dept}'/>
 	<h1>All Employees' Review</h1>
 		<table border="1px" cellpadding="8px">

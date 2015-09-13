@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 		} else {
 			User user = (User) u.get(0);
 			String digestedPassword = DigestUtils.sha1Hex(password);
-			System.out.print(digestedPassword);
+			//System.out.print(digestedPassword);
 			if (digestedPassword.equals(user.getPassword())) {
 				ActionContext.getContext().getSession().put("user",user );
 				if(user!=null){  

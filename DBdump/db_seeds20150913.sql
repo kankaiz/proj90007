@@ -16,6 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Dumping data for table `dept`
+--
+
+LOCK TABLES `dept` WRITE;
+/*!40000 ALTER TABLE `dept` DISABLE KEYS */;
+INSERT INTO `dept` VALUES (1,'HR-department'),(2,'Develop');
+/*!40000 ALTER TABLE `dept` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `peformance_review`
 --
 
@@ -23,6 +33,25 @@ LOCK TABLES `peformance_review` WRITE;
 /*!40000 ALTER TABLE `peformance_review` DISABLE KEYS */;
 INSERT INTO `peformance_review` VALUES (2,1,3333,'initiate',NULL,2,'ghdmgh',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,1,2222,'initiate',NULL,4,'xdd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,3,2015,'HR',2,1,'David is awesome',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,2,2015,'supervisor',NULL,3,'Hello world',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,3,3333,'supervisor',2,3,'23333333333',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `peformance_review` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `profile`
+--
+
+LOCK TABLES `profile` WRITE;
+/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
+/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'HR_J','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,1,'normal'),(2,'David','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,2,'normal'),(3,'Jeremy','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',2,2,'normal');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -34,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-13 18:47:29
+-- Dump completed on 2015-09-13 20:25:24
