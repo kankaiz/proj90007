@@ -95,7 +95,7 @@ public class ReviewAction extends ActionSupport {
 			review.setSelfRate(selfRate);
 			review.setSelfAssessment(selfAssessment);
 		}
-		if(review.getStatus().equals(STATUS_SUPORVISOR) && user.isSupervisor()){
+		if(review.getStatus().equals(STATUS_SUPORVISOR)){
 			review.setSupervisorAssessment(supervisorAssessment);
 		}
 		if(review.getStatus().equals(STATUS_HR) && user.isHR()) {
@@ -121,7 +121,7 @@ public class ReviewAction extends ActionSupport {
 			review.setStatus(STATUS_SUPORVISOR);
 		}
 		else if (review.getStatus().equals(STATUS_SUPORVISOR)) {
-			if(userService.isSupervisor(user)) {
+			if(true) {
 				review.setStatus(STATUS_HR);
 			}
 			//TODO supervisor gives comments
