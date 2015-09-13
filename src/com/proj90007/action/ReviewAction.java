@@ -58,13 +58,14 @@ public class ReviewAction extends ActionSupport {
 			review.setInitiator(user);
 			review.setStatus("initiate");
 		}
-		review.setReviewYear(reviewYear);
-		review.setSelfRate(selfRate);
-		review.setSelfAssessment(selfAssessment);
-		if(review.getStatus() == "supervisor" && !user.isHR()){
+		if(review.getStatus() == "initiate") {
+			review.setReviewYear(reviewYear);
+			review.setSelfRate(selfRate);
+			review.setSelfAssessment(selfAssessment);
+		}
+		if(review.getStatus() == "supervisor" && user.isSupervisor()){
 			review.setSupervisorAssessment(supervisorAssessment);
 		}
-		
 		if(review.getStatus() == "HR" && user.isHR()) {
 			review.setHrAssessment(hrAssessment);
 		}
