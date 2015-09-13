@@ -61,17 +61,17 @@
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 			</s:if>
-			<s:if test='%{review.status == "initiator" && review.initiator.username == #session.user.username}'>
+			<s:if test='%{review.status == "initiate" && review.initiator.username == #session.user.username}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
-				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='editReview';"/>
 			</s:if>
 			<s:if test='%{review.status == "supervisor" && review.supervisorReviewer.username == #session.user.username}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
-				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='editReview';"/>
 			</s:if>	
 			<s:if test='%{review.status == "HR" && #session.user.dept.deptName == "HR-department"}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
-				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='editReview';"/>
 			</s:if>
 	</s:form>
 </body>

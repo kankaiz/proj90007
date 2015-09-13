@@ -37,8 +37,9 @@ public class ReviewAction extends ActionSupport {
 	private Set<Review> subordinateReviews;
 	private Set<Review> allEmployeeReviews;
 	
-//	HttpServletRequest request = ServletActionContext.getRequest();
-//	String name = request.getParameter("name");
+	private final static String STATUS_INITIATE = "initiate";
+	private final static String STATUS_SUPORVISOR = "supervisor";
+	private final static String STATUS_HR = "HR";
 
 	@Override
 	public String execute() throws Exception {
@@ -53,22 +54,12 @@ public class ReviewAction extends ActionSupport {
 	
 	public String createReview() {
 		User user = (User) ServletActionContext.getContext().getSession().get("user");
-		if(review == null) {
 			review = new Review();
-			review.setInitiator(user);
-			review.setStatus("initiate");
-		}
-		if(review.getStatus() == "initiate") {
 			review.setReviewYear(reviewYear);
 			review.setSelfRate(selfRate);
 			review.setSelfAssessment(selfAssessment);
-		}
-		if(review.getStatus() == "supervisor" && user.isSupervisor()){
-			review.setSupervisorAssessment(supervisorAssessment);
-		}
-		if(review.getStatus() == "HR" && user.isHR()) {
-			review.setHrAssessment(hrAssessment);
-		}
+			review.setInitiator(user);
+			review.setStatus(STATUS_INITIATE);		
 		
 		reviewService.createReview(review);
 		return SUCCESS;
@@ -98,10 +89,19 @@ public class ReviewAction extends ActionSupport {
 	}
 	
 	public String editReview() {
-		review.setReviewYear(reviewYear);
-		review.setSelfRate(selfRate);
-		review.setSelfAssessment(selfAssessment);
-		reviewService.createReview(review);
+		User user = (User) ServletActionContext.getContext().getSession().get("user");
+		if(review.getStatus().equals(STATUS_INITIATE)) {
+			review.setReviewYear(reviewYear);
+			review.setSelfRate(selfRate);
+			review.setSelfAssessment(selfAssessment);
+		}
+		if(review.getStatus().equals(STATUS_SUPORVISOR) && user.isSupervisor()){
+			review.setSupervisorAssessment(supervisorAssessment);
+		}
+		if(review.getStatus().equals(STATUS_HR) && user.isHR()) {
+			review.setHrAssessment(hrAssessment);
+		}
+		reviewService.editReview(review);
 		return SUCCESS;
 	}
 	
@@ -110,23 +110,23 @@ public class ReviewAction extends ActionSupport {
 		if (review == null) {
 			review = new Review();
 			review.setInitiator(user);
-			review.setStatus("initiate");
+			review.setStatus(STATUS_INITIATE);
 		}
 		
-		if (review.getStatus().equals("initiate")) {
+		if (review.getStatus().equals(STATUS_INITIATE)) {
 			review.setReviewYear(reviewYear);
 			review.setSelfRate(selfRate);
 			review.setSelfAssessment(selfAssessment);
 			review.setSupervisorReviewer(user.getSupervisor());
-			review.setStatus("supervisor");
+			review.setStatus(STATUS_SUPORVISOR);
 		}
-		else if (review.getStatus().equals("supervisor")) {
+		else if (review.getStatus().equals(STATUS_SUPORVISOR)) {
 			if(userService.isSupervisor(user)) {
-				review.setStatus("HR");
+				review.setStatus(STATUS_HR);
 			}
 			//TODO supervisor gives comments
 		}
-		else if(review.getStatus().equals("HR")) {
+		else if(review.getStatus().equals(STATUS_HR)) {
 			//TODO HR gives comments
 			if(userService.isHR(user)) {
 				review.setHrReviewer(user);

@@ -27,10 +27,15 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void createReview(Review review ) {
-		reviewDAO.attachDirty(review);
+		reviewDAO.save(review);
 	}
 	
 	
+	@Override
+	public void editReview(Review review) {
+		reviewDAO.attachDirty(review);
+	}
+
 	@Override
 	public void deleteReview(Integer reviewID) {
 		Review review = new Review();
