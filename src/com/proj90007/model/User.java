@@ -69,6 +69,10 @@ public class User implements java.io.Serializable {
 		Hibernate.initialize(this.dept);
 		return this.dept.isHrDept();
 	}
+	
+	public Boolean isSupervisor() {
+		return this.subordinates.size() > 0;
+	}
 
 	public Integer getId() {
 		return this.id;

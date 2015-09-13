@@ -13,6 +13,7 @@
 
 		<action name="createReview" class="ReviewAction" method="createReview">
 			<result name="success" type="redirectAction">listReviews</result>
+			<result name="input">createReview.jsp</result>
 		</action>
 		
 		<action name="listReviews" class="ReviewAction" method="listReviews">
@@ -29,6 +30,7 @@
 		
 		<action name="editReview" class="ReviewAction" method="editReview">
 			<result name="success" type="redirectAction">listReviews</result>
+			<result name="input">createReview.jsp</result>
 		</action>
 		
 		<action name="submitReview" class="ReviewAction" method="submitReview">

@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 			String digestedPassword = DigestUtils.sha1Hex(password);
 			//System.out.print(digestedPassword);
 			if (digestedPassword.equals(user.getPassword())) {
+				Hibernate.initialize(user.getDept());
 				ActionContext.getContext().getSession().put("user",user );
 				if(user!=null){  
 					Hibernate.initialize(user.getSelfReviews());  

@@ -27,20 +27,51 @@
 <body>
 	<h2>Create Review</h2>
 	<s:form>
-		<s:textfield name="reviewYear" label="review year" value="%{review.reviewYear}"/>
-		<s:radio label="Self Rate" name="selfRate"
-			list="#{'1':'exceptional','2':'exceeds expectation','3':'achieve expectation','4':'meet some expectation','5':'does not meet'}"
-			value="%{review.selfRate}" />
-		<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50"
-			rows="5" />
-		<s:if test='%{review.status == "supervisor" ||  #session.user.subordinates.size() == 0}'>
-		<s:textarea name="supervisorAssessment" label="Supervisor Assessment" value="%{review.supervisorAssessment}" cols="50" rows="5" />
-		</s:if>
-	<s:if test='%{review.status == "HR" && #session.user.dept.deptName == "HR_department"}'>
-	<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" />
-	</s:if>
-		<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
-		<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+		<s:if test='%{review == null || review.initiator == null || review.initiator == #session.user.username}'>
+				<s:textfield name="reviewYear" label="review year" value="%{review.reviewYear}" readonly="false"/>
+				<s:radio label="Self Rate" name="selfRate" list="#{'1':'exceptional','2':'exceeds expectation','3':'achieve expectation','4':'meet some expectation','5':'does not meet'}" value="%{review.selfRate}" />
+				<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50" rows="5" readonly="false"/>
+			</s:if>
+			<s:else>
+				<s:textfield name="reviewYear" label="review year" value="%{review.reviewYear}" readonly="true"/>
+				<s:label label="Self Rate" name="selfRate" value="%{review.selfRate}"/>
+				<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50" rows="5" readonly="true"/>
+			</s:else>
+			<s:label value='%{review.initiator}'/>
+			<s:label value='%{#session.user.username}'/>
+			<s:label value='%{review.supervisorReviewer}'/>
+			<s:if test='%{review.status == "supervisor" && #session.user.username == review.supervisorReviewer}'>
+				<s:textarea name="supervisorAssessment" label="Supervisor Assessment" value="%{review.supervisorAssessment}" cols="50" rows="5" readonly="false"/>
+			</s:if>
+			<s:elseif test='%{review.status == "supervisor" || review.status == "HR"}'>
+				<s:textarea name="supervisorAssessment" label="Supervisor Assessment" value="%{review.supervisorAssessment}" cols="50" rows="5" readonly="true"/>
+			</s:elseif>
+			
+			<s:label value='%{review.status}'></s:label>
+			<s:label value='%{#session.user.dept}'></s:label>
+			<s:if test='%{review.status == "HR" && #session.user.dept == "HR-department"}'>
+				<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" readonly="false"/>
+			</s:if>
+			<s:elseif test='%{review.status == "HR"'>
+				<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" readonly="true"/>
+			</s:elseif>
+			
+			<s:if test='%{review == null}'>
+				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+			</s:if>
+			<s:if test='%{review.status == "initiator" && review.initiator == #session.user.username}'>
+				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+			</s:if>
+			<s:if test='%{review.status == "supervisor" && review.supervisorReviewer == #session.user.username}'>
+				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+			</s:if>	
+			<s:if test='%{review.status == "HR" && #session.user.dept == "HR-department"}'>
+				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
+				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
+			</s:if>
 	</s:form>
 </body>
 </html>
