@@ -8,6 +8,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.Hibernate;
 
+import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -76,10 +78,11 @@ public class User implements java.io.Serializable {
 		this.id = id;
 	}
 
+	@TypeConversion(converter = "com.proj90007.converter.DeptConverter")
 	public Dept getDept() {
 		return this.dept;
 	}
-
+	
 	public void setDept(Dept dept) {
 		this.dept = dept;
 	}

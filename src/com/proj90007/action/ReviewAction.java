@@ -24,6 +24,10 @@ public class ReviewAction extends ActionSupport {
 	
 	private String selfAssessment;
 	
+	private String supervisorAssessment;
+
+	private String hrAssessment;
+	
 	private ReviewService reviewService;
 	
 	private UserService userService;
@@ -57,11 +61,15 @@ public class ReviewAction extends ActionSupport {
 		review.setReviewYear(reviewYear);
 		review.setSelfRate(selfRate);
 		review.setSelfAssessment(selfAssessment);
+		if(review.getStatus() == "supervisor" && !user.isHR()){
+			review.setSupervisorAssessment(supervisorAssessment);
+		}
+		
+		if(review.getStatus() == "HR" && user.isHR()) {
+			review.setHrAssessment(hrAssessment);
+		}
 		
 		reviewService.createReview(review);
-		
-		//selfReviews = reviewService.listSelfReviews(user);
-		//System.out.println(selfReviews.toString());
 		return SUCCESS;
 	}
 	
@@ -112,7 +120,7 @@ public class ReviewAction extends ActionSupport {
 			review.setStatus("supervisor");
 		}
 		else if (review.getStatus().equals("supervisor")) {
-			if(!userService.isHR(user)) {
+			if(userService.isSupervisor(user)) {
 				review.setStatus("HR");
 			}
 			//TODO supervisor gives comments
@@ -159,6 +167,22 @@ public class ReviewAction extends ActionSupport {
 
 	public void setSelfRate(int selfRate) {
 		this.selfRate = selfRate;
+	}
+	
+	public String getSupervisorAssessment() {
+		return supervisorAssessment;
+	}
+
+	public void setSupervisorAssessment(String supervisorAssessment) {
+		this.supervisorAssessment = supervisorAssessment;
+	}
+
+	public String getHrAssessment() {
+		return hrAssessment;
+	}
+
+	public void setHrAssessment(String hrAssessment) {
+		this.hrAssessment = hrAssessment;
 	}
 
 	public String getSelfAssessment() {

@@ -80,6 +80,14 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public boolean isSupervisor(User user) {
+		User u = userDAO.findById(user.getId());
+		Hibernate.initialize(u.getSubordinates());
+		boolean isSupervisor = (u.getSubordinates().size() > 0);
+		return isSupervisor;
+	}
+	
+	@Override
 	public boolean isHR(User user) {
 		User u = userDAO.findById(user.getId());
 		Hibernate.initialize(u.isHR());

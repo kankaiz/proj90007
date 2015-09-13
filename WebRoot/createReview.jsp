@@ -33,6 +33,12 @@
 			value="%{review.selfRate}" />
 		<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50"
 			rows="5" />
+		<s:if test='%{review.status == "supervisor" ||  #session.user.subordinates.size() == 0}'>
+		<s:textarea name="supervisorAssessment" label="Supervisor Assessment" value="%{review.supervisorAssessment}" cols="50" rows="5" />
+		</s:if>
+	<s:if test='%{review.status == "HR" && #session.user.dept.deptName == "HR_department"}'>
+	<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" />
+	</s:if>
 		<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 		<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 	</s:form>

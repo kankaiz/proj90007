@@ -66,6 +66,7 @@
 	<h1>Subordinates' Review</h1>
 		<table border="1px" cellpadding="8px">
 			<tr>
+				<th>Subordinate</th>
 				<th>Status</th>
 				<th>ReviewYear</th>
 				<th>SelfRate</th>
@@ -74,6 +75,7 @@
 			</tr>
 			<s:iterator value="subordinateReviews" id="review">
 				<tr>
+					<td><s:property value="#review.initiator"/></td>
 					<td><s:property value="#review.status" /></td>
 					<td><s:property value="#review.reviewYear" /></td>
 					<td><s:property value="#review.selfRate" /></td>
@@ -84,10 +86,12 @@
 		</table>
 	</s:if>
 	
-	<s:if test="allEmployeeReviews.size() > 0">
+	<s:if test='%{allEmployeeReviews.size() > 0 || #session.user.dept.deptName == "HR-department"}'>
+	<s:label value='%{#session.user.dept}'/>
 	<h1>All Employees' Review</h1>
 		<table border="1px" cellpadding="8px">
 			<tr>
+				<th>Initiator</th>
 				<th>Status</th>
 				<th>ReviewYear</th>
 				<th>SelfRate</th>
@@ -96,6 +100,7 @@
 			</tr>
 			<s:iterator value="allEmployeeReviews" id="review">
 				<tr>
+					<td><s:property value="#review.initiator"/></td>
 					<td><s:property value="#review.status" /></td>
 					<td><s:property value="#review.reviewYear" /></td>
 					<td><s:property value="#review.selfRate" /></td>

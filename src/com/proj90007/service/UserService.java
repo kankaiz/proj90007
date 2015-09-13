@@ -19,4 +19,6 @@ public interface UserService {
 	
 	public boolean isHR(User user);
 	
+	public boolean isSupervisor(User user);
+	
 }
