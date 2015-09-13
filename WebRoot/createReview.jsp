@@ -27,20 +27,21 @@
 <body>
 	<h2>Create Review</h2>
 	<s:form>
-		<s:if test='%{review == null || review.initiator == null || review.initiator == #session.user.username}'>
+		<s:if test='%{review == null || review.initiator == null || review.initiator.username == #session.user.username}'>
 				<s:textfield name="reviewYear" label="review year" value="%{review.reviewYear}" readonly="false"/>
 				<s:radio label="Self Rate" name="selfRate" list="#{'1':'exceptional','2':'exceeds expectation','3':'achieve expectation','4':'meet some expectation','5':'does not meet'}" value="%{review.selfRate}" />
 				<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50" rows="5" readonly="false"/>
 			</s:if>
 			<s:else>
+				<s:label value='%{review.initiator}'></s:label>
 				<s:textfield name="reviewYear" label="review year" value="%{review.reviewYear}" readonly="true"/>
 				<s:label label="Self Rate" name="selfRate" value="%{review.selfRate}"/>
 				<s:textarea name="selfAssessment" label="Self Assessment" value="%{review.selfAssessment}" cols="50" rows="5" readonly="true"/>
 			</s:else>
 			<s:label value='%{review.initiator}'/>
 			<s:label value='%{#session.user.username}'/>
-			<s:label value='%{review.supervisorReviewer}'/>
-			<s:if test='%{review.status == "supervisor" && #session.user.username == review.supervisorReviewer}'>
+			<s:label value='%{review.supervisorReviewer.username}'/>
+			<s:if test='%{review.status == "supervisor" && #session.user.username == review.supervisorReviewer.username}'>
 				<s:textarea name="supervisorAssessment" label="Supervisor Assessment" value="%{review.supervisorAssessment}" cols="50" rows="5" readonly="false"/>
 			</s:if>
 			<s:elseif test='%{review.status == "supervisor" || review.status == "HR"}'>
@@ -49,7 +50,7 @@
 			
 			<s:label value='%{review.status}'></s:label>
 			<s:label value='%{#session.user.dept}'></s:label>
-			<s:if test='%{review.status == "HR" && #session.user.dept == "HR-department"}'>
+			<s:if test='%{review.status == "HR" && #session.user.dept.deptName == "HR-department"}'>
 				<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" readonly="false"/>
 			</s:if>
 			<s:elseif test='%{review.status == "HR"'>
@@ -60,15 +61,15 @@
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 			</s:if>
-			<s:if test='%{review.status == "initiator" && review.initiator == #session.user.username}'>
+			<s:if test='%{review.status == "initiator" && review.initiator.username == #session.user.username}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 			</s:if>
-			<s:if test='%{review.status == "supervisor" && review.supervisorReviewer == #session.user.username}'>
+			<s:if test='%{review.status == "supervisor" && review.supervisorReviewer.username == #session.user.username}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 			</s:if>	
-			<s:if test='%{review.status == "HR" && #session.user.dept == "HR-department"}'>
+			<s:if test='%{review.status == "HR" && #session.user.dept.deptName == "HR-department"}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='createReview';"/>
 			</s:if>

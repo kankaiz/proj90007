@@ -71,6 +71,7 @@ public class User implements java.io.Serializable {
 	}
 	
 	public Boolean isSupervisor() {
+		Hibernate.initialize(this.subordinates);
 		return this.subordinates.size() > 0;
 	}
 
