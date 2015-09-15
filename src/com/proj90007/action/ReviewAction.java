@@ -1,5 +1,6 @@
 package com.proj90007.action;
 
+import java.sql.Date;
 import java.util.Set;
 
 import org.apache.struts2.ServletActionContext;
@@ -14,29 +15,22 @@ import com.proj90007.service.UserService;
 
 public class ReviewAction extends ActionSupport {
 	
-	private Review review;
-	
-	private int id;
-	
+	private Review review;	
+	private int id;	
 	private int reviewYear;
-	
 	private int selfRate;
-	
 	private String selfAssessment;
-	
 	private String supervisorAssessment;
-
 	private String hrAssessment;
-	
 	private ReviewService reviewService;
-	
 	private UserService userService;
-	
+
 	//private List<Review> selfReviews;
 	private Set<Review> selfReviews;
 	private Set<Review> subordinateReviews;
 	private Set<Review> allEmployeeReviews;
 	
+	//Status Strings
 	private final static String STATUS_INITIATE = "initiate";
 	private final static String STATUS_SUPORVISOR = "supervisor";
 	private final static String STATUS_HR = "HR";
@@ -233,7 +227,6 @@ public class ReviewAction extends ActionSupport {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
 	
 
 }

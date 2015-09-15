@@ -38,9 +38,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void deleteReview(Integer reviewID) {
-		Review review = new Review();
-		review.setId(reviewID);
-		//reviewDAO.findById(reviewID);
+		//Review review = new Review();
+		//review.setId(reviewID);
+		Review review =reviewDAO.findById(reviewID);
 		reviewDAO.delete(review);
 	}
 	

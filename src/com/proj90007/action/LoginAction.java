@@ -1,5 +1,7 @@
 package com.proj90007.action;
 
+import java.sql.Date;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.proj90007.model.User;
 import com.proj90007.service.UserService;
@@ -17,21 +19,6 @@ public class LoginAction extends ActionSupport {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
-//	public String login() {
-//		System.out.print("aaaaaaa");
-//		if (null == name.trim() && null == password.trim()) {
-//			return "login";
-//		} else {
-//			Boolean u = userService.login(name, password);
-//			if (u) {
-//				return "ok";
-//			} else {
-//				return "error";
-//			}
-//
-//		}
-//	}
 		
 	@Override
 	public String execute() throws Exception {
@@ -67,5 +54,6 @@ public class LoginAction extends ActionSupport {
 		this.password = password;
 	}
 
+	
 
 }
