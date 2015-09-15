@@ -35,7 +35,7 @@ public class Dept implements java.io.Serializable {
 	// Property accessors
 	
 	public Boolean isHrDept() {
-		if (this.deptName=="HR-department") // hard code here
+		if (this.deptName.equals("HR-department")) // hard code here
 			return true;
 		else return false;
 	}

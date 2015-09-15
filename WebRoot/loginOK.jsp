@@ -97,6 +97,8 @@
 				<th>ReviewYear</th>
 				<th>SelfRate</th>
 				<th>SelfAssessment</th>
+				<th>SupervisorAssessment</th>
+				<th>HRAssessment</th>
 				<th>Edit</th>
 			</tr>
 			<s:iterator value="allEmployeeReviews" id="review">
@@ -106,6 +108,8 @@
 					<td><s:property value="#review.reviewYear" /></td>
 					<td><s:property value="#review.selfRate" /></td>
 					<td><s:property value="#review.selfAssessment" /></td>
+					<td><s:property value="#review.supervisorAssessment" /></td>
+					<td><s:property value="#review.hrAssessment" /></td>
 					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">edit</a></td>
 				</tr>
 			</s:iterator>

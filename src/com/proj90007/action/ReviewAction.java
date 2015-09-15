@@ -119,7 +119,7 @@ public class ReviewAction extends ActionSupport {
 			review.setSupervisorAssessment(supervisorAssessment);
 		}
 		else if(review.getStatus().equals(STATUS_HR)) {
-			if(userService.isHR(user)) {
+			if(user.isHR()) {
 				review.setHrReviewer(user);
 				review.setHrAssessment(hrAssessment);
 			}
