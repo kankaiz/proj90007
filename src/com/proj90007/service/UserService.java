@@ -17,8 +17,4 @@ public interface UserService {
 	
 	public Set<Review> listReviewsToBeArchived(User hr);
 	
-	public boolean isHR(User user);
-	
-	public boolean isSupervisor(User user);
-	
 }
