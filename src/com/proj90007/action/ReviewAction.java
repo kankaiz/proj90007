@@ -115,18 +115,16 @@ public class ReviewAction extends ActionSupport {
 			review.setStatus(STATUS_SUPORVISOR);
 		}
 		else if (review.getStatus().equals(STATUS_SUPORVISOR)) {
-			if(true) {
-				review.setStatus(STATUS_HR);
-			}
-			//TODO supervisor gives comments
+			review.setStatus(STATUS_HR);
+			review.setSupervisorAssessment(supervisorAssessment);
 		}
 		else if(review.getStatus().equals(STATUS_HR)) {
-			//TODO HR gives comments
 			if(userService.isHR(user)) {
 				review.setHrReviewer(user);
+				review.setHrAssessment(hrAssessment);
 			}
 		}
-		reviewService.createReview(review);
+		reviewService.editReview(review);
 
 		return SUCCESS;
 	}
