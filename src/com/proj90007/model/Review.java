@@ -1,5 +1,10 @@
 package com.proj90007.model;
 
+
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 // default package
@@ -33,6 +38,8 @@ public class Review  implements java.io.Serializable {
      private Integer hrRate;
      private String hrAssessment;
      private Integer compliance;
+     //optimistic lock column
+     private Date lastUpdateDate;
 
 
     // Constructors
@@ -216,6 +223,18 @@ public class Review  implements java.io.Serializable {
     public void setCompliance(Integer compliance) {
         this.compliance = compliance;
     }
+
+	public Date getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(Date lastupdateDate) {
+		if(lastupdateDate==null) {
+			Date date= new Date();
+			lastupdateDate = new Timestamp(date.getTime());
+		}
+		this.lastUpdateDate = lastupdateDate;
+	}
 
 
 

@@ -10,6 +10,9 @@
             <column name="id" />
             <generator class="increment" />
         </id>
+       	<!-- optimistic lock here -->
+        <timestamp name="lastUpdateDate" column="last_update_date"></timestamp>
+        
         <many-to-one name="initiator" class="com.proj90007.model.User" fetch="select" lazy="proxy">
             <column name="initiator_id" not-null="true" />
         </many-to-one>

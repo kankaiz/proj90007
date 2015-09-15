@@ -10,6 +10,9 @@
             <column name="id" />
             <generator class="assigned" />
         </id>
+        <!-- optimistic lock here -->
+        <timestamp name="lastUpdateDate" column="last_update_date"></timestamp>
+        
         <many-to-one name="user" class="com.proj90007.model.User" fetch="select">
             <column name="user_id" not-null="true" unique="true"/>
         </many-to-one>

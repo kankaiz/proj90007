@@ -1,5 +1,7 @@
 package com.proj90007.model;
 
+import java.sql.Date;
+
 /**
  * Profile entity. @author MyEclipse Persistence Tools
  */
@@ -16,6 +18,8 @@ public class Profile implements java.io.Serializable {
 	private String phone;
 	private String fax;
 	private String description;
+	//optimistic lock column
+    private Date lastUpdateDate;
 
 	// Constructors
 
@@ -107,5 +111,14 @@ public class Profile implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Date getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(Date lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+	
 
 }
