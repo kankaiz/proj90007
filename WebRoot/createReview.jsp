@@ -48,12 +48,10 @@
 				<s:textarea name="supervisorAssessment" label="Supervisor Assessment" value="%{review.supervisorAssessment}" cols="50" rows="5" readonly="true"/>
 			</s:elseif>
 			
-			<s:label value='%{review.status}'></s:label>
-			<s:label value='%{#session.user.dept}'></s:label>
 			<s:if test='%{review.status == "HR" && #session.user.dept.deptName == "HR-department"}'>
 				<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" readonly="false"/>
 			</s:if>
-			<s:elseif test='%{review.status == "HR"'>
+			<s:elseif test='%{review.status == "HR"}' >
 				<s:textarea name="hrAssessment" label="HR Asseessment" value="%{review.hrAssessment}" cols="50" rows="5" readonly="true"/>
 			</s:elseif>
 			

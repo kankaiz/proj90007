@@ -71,7 +71,8 @@
 				<th>ReviewYear</th>
 				<th>SelfRate</th>
 				<th>SelfAssessment</th>
-				<th>Edit</th>
+				<th>SupervisorAssessment</th>
+				<th>Evaluate</th>
 			</tr>
 			<s:iterator value="subordinateReviews" id="review">
 				<tr>
@@ -80,7 +81,8 @@
 					<td><s:property value="#review.reviewYear" /></td>
 					<td><s:property value="#review.selfRate" /></td>
 					<td><s:property value="#review.selfAssessment" /></td>
-					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">edit</a></td>
+					<td><s:property value="#review.supervisorAssessment" /></td>
+					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">Evaluate</a></td>
 				</tr>
 			</s:iterator>
 		</table>
@@ -99,7 +101,7 @@
 				<th>SelfAssessment</th>
 				<th>SupervisorAssessment</th>
 				<th>HRAssessment</th>
-				<th>Edit</th>
+				<th>Evaluate</th>
 			</tr>
 			<s:iterator value="allEmployeeReviews" id="review">
 				<tr>
@@ -110,7 +112,7 @@
 					<td><s:property value="#review.selfAssessment" /></td>
 					<td><s:property value="#review.supervisorAssessment" /></td>
 					<td><s:property value="#review.hrAssessment" /></td>
-					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">edit</a></td>
+					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">Evaluate</a></td>
 				</tr>
 			</s:iterator>
 		</table>
