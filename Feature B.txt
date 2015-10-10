@@ -1,0 +1,3 @@
+Feature B
+-Group 14 
+For Part 3, you will design and implement a feature that allows supervisors and employees to concurrently edit performance reviews. An employee can edit their self-evaluation performance reviews, and a supervisor can edit an employee's self-evaluation to provide additional input. Supervisors must be able to search for an employee self-evaluation, read it, make changes to any field that is editable by the employee, and remove evaluations all together. Note that employee cannot search, read, edit, or delete each others' self-evaluations, unless they are a supervisor. 
