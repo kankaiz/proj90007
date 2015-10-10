@@ -15,7 +15,8 @@ import com.proj90007.service.UserService;
 
 public class ReviewAction extends ActionSupport {
 	
-	private Review review;	
+	private Review review;
+	private String searchedUsernamae;
 	private int id;	
 	private int reviewYear;
 	private int selfRate;
@@ -29,6 +30,7 @@ public class ReviewAction extends ActionSupport {
 	private Set<Review> selfReviews;
 	private Set<Review> subordinateReviews;
 	private Set<Review> allEmployeeReviews;
+	private Set<Review> searchedReviews;
 	
 	//Status Strings
 	private final static String STATUS_INITIATE = "initiate";
@@ -72,6 +74,11 @@ public class ReviewAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String searchReviews() {
+		searchedReviews = userService.getReviewsByUsername(searchedUsernamae);
+		return SUCCESS;
+	}
+	
 	public String deleteReview() {
 		reviewService.deleteReview(this.id);
 		return SUCCESS;
@@ -90,6 +97,9 @@ public class ReviewAction extends ActionSupport {
 			review.setSelfAssessment(selfAssessment);
 		}
 		if(review.getStatus().equals(STATUS_SUPORVISOR)){
+			review.setReviewYear(reviewYear);
+			review.setSelfRate(selfRate);
+			review.setSelfAssessment(selfAssessment);
 			review.setSupervisorAssessment(supervisorAssessment);
 		}
 		if(review.getStatus().equals(STATUS_HR) && user.isHR()) {
@@ -116,6 +126,9 @@ public class ReviewAction extends ActionSupport {
 		}
 		else if (review.getStatus().equals(STATUS_SUPORVISOR)) {
 			review.setStatus(STATUS_HR);
+			review.setReviewYear(reviewYear);
+			review.setSelfRate(selfRate);
+			review.setSelfAssessment(selfAssessment);
 			review.setSupervisorAssessment(supervisorAssessment);
 		}
 		else if(review.getStatus().equals(STATUS_HR)) {
@@ -224,6 +237,22 @@ public class ReviewAction extends ActionSupport {
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public Set<Review> getSearchedReviews() {
+		return searchedReviews;
+	}
+
+	public void setSearchedReviews(Set<Review> searchedReviews) {
+		this.searchedReviews = searchedReviews;
+	}
+
+	public String getSearchedUsernamae() {
+		return searchedUsernamae;
+	}
+
+	public void setSearchedUsernamae(String searchedUsernamae) {
+		this.searchedUsernamae = searchedUsernamae;
 	}
 	
 

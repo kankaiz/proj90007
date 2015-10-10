@@ -64,6 +64,11 @@
 
 	<s:if test="subordinateReviews.size() > 0">
 	<h1>Subordinates' Review</h1>
+	<s:form>
+	<s:textfield name="searchedUsernamae" label="search reviews by username"></s:textfield>
+	<s:submit value="submit" name="submit" onclick="form.action='searchReviews';"/>
+	</s:form>
+	<s:if test="searchedReviews.size() > 0">
 		<table border="1px" cellpadding="8px">
 			<tr>
 				<th>Subordinate</th>
@@ -73,6 +78,35 @@
 				<th>SelfAssessment</th>
 				<th>SupervisorAssessment</th>
 				<th>Evaluate</th>
+				<th>Delete</th>
+			</tr>
+			<s:iterator value="searchedReviews" id="review">
+				<tr>
+					<td><s:property value="#review.initiator"/></td>
+					<td><s:property value="#review.status" /></td>
+					<td><s:property value="#review.reviewYear" /></td>
+					<td><s:property value="#review.selfRate" /></td>
+					<td><s:property value="#review.selfAssessment" /></td>
+					<td><s:property value="#review.supervisorAssessment" /></td>
+					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">Evaluate</a></td>
+					<td><a href="${pageContext.request.contextPath }/deleteReview.action?id=<s:property value="id"/>">delete</a></td>
+				</tr>
+			</s:iterator>
+		</table>
+	</s:if>
+	<br>
+	
+	
+		<table border="1px" cellpadding="8px">
+			<tr>
+				<th>Subordinate</th>
+				<th>Status</th>
+				<th>ReviewYear</th>
+				<th>SelfRate</th>
+				<th>SelfAssessment</th>
+				<th>SupervisorAssessment</th>
+				<th>Evaluate</th>
+				<th>Delete</th>
 			</tr>
 			<s:iterator value="subordinateReviews" id="review">
 				<tr>
@@ -83,6 +117,7 @@
 					<td><s:property value="#review.selfAssessment" /></td>
 					<td><s:property value="#review.supervisorAssessment" /></td>
 					<td><a href="${pageContext.request.contextPath }/attempEditReview.action?id=<s:property value="id"/>">Evaluate</a></td>
+					<td><a href="${pageContext.request.contextPath }/deleteReview.action?id=<s:property value="id"/>">delete</a></td>
 				</tr>
 			</s:iterator>
 		</table>

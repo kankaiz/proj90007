@@ -20,6 +20,10 @@
 			<result name="success">loginOK.jsp</result>
 		</action>
 		
+		<action name="searchReviews" class="ReviewAction" method="searchReviews">
+			<result name="success">loginOK.jsp</result>
+		</action>
+		
 		<action name="deleteReview" class="ReviewAction" method="deleteReview">
 			<result name="success" type="redirectAction">listReviews</result>
 		</action>

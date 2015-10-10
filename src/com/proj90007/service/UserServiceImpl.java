@@ -1,5 +1,6 @@
 package com.proj90007.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -85,5 +86,18 @@ public class UserServiceImpl implements UserService {
 		List reviews = reviewDAO.findByStatus("HR");
 		Set<Review> reviewsToBeArchived = new HashSet<Review>(reviews);
 		return reviewsToBeArchived;
+	}
+	
+	@Override
+	public Set<Review> getReviewsByUsername(String userName) {
+		Set<Review> reviews = new HashSet<Review>();
+		List<User> userList = userDAO.findByUsername(userName);
+		for(int i = 0; i < userList.size(); i++) {
+			User user = userList.get(i);
+//			Hibernate.initialize(user.getId());
+			List<Review> list = reviewDAO.findByProperty("initiator", user);
+			reviews.addAll(list);
+		}
+		return reviews;
 	}
 }
