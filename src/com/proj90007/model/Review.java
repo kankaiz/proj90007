@@ -2,10 +2,7 @@ package com.proj90007.model;
 
 
 
-import java.sql.Timestamp;
 import java.util.Date;
-
-import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 // default package
 
@@ -229,10 +226,6 @@ public class Review  implements java.io.Serializable {
 	}
 
 	public void setLastUpdateDate(Date lastupdateDate) {
-		if(lastupdateDate==null) {
-			Date date= new Date();
-			lastupdateDate = new Timestamp(date.getTime());
-		}
 		this.lastUpdateDate = lastupdateDate;
 	}
 
