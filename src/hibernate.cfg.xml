@@ -13,8 +13,8 @@
 		<property name="hibernate.c3p0.timeout">300</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
 		<property name="hibernate.c3p0.idle_test_period">3000</property> -->
-	<property name="myeclipse.connection.profile">mySql</property>
-	<property name="connection.url">jdbc:mysql://localhost:3306/proj90007</property>
+	<property name="myeclipse.connection.profile">proj90007pub</property>
+	<property name="connection.url">jdbc:mysql://115.146.94.107:3306/proj90007</property>
 	<property name="connection.username">root</property>
 	<property name="connection.password">root</property>
 	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>

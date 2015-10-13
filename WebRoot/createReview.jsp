@@ -59,7 +59,7 @@
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='editReview';"/>
 			</s:if>
-			<s:if test='%{review.status == "supervisor" && review.supervisorReviewer.username == #session.user.username}'>
+			<s:if test='%{review.status == "supervisor" && (review.supervisorReviewer.username == #session.user.username || review.initiator.username == #session.user.username)}'>
 				<s:submit value="submit" name="submit" onclick="form.action='submitReview';"/>
 				<s:submit value="save" name="save" onclick="form.action='editReview';"/>
 			</s:if>	
