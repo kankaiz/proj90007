@@ -1,1 +1,1 @@
-The project is deployed on Nectar server http://115.146.94.107:8080/proj90007/ and Amazon AWS server http://ec2-52-64-223-39.ap-southeast-2.compute.amazonaws.com:8080/proj90007/ as backup.
+Mirror from https://bitbucket.org/David_KunLiu/proj90007/
